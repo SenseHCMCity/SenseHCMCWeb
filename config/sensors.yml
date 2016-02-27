@@ -1,0 +1,7 @@
+sensors:
+  - id: 1
+    name: "Chợ Phú Lâm"
+    channelId: 88894
+    geo:
+      latitude: 10.75568
+      longitude: 106.62985

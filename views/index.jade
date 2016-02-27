@@ -5,5 +5,5 @@ block content
   p= t('app.intro')
   h2 Sensors
   p
-    a(href='/sensor') Sensor 1    
-    p Sensor 2
+    each sensor in sensors
+      a(href='/sensor/#{sensor.id}') #{sensor.name}

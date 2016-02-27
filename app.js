@@ -1,5 +1,7 @@
 var express = require('express');
 var path = require('path');
+var fs = require('fs');
+var yaml = require('js-yaml')
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -12,6 +14,11 @@ var i18nBck = require('i18next-node-fs-backend');
 var routes = require('./routes/index');
 
 var app = express();
+
+// get sensor details 
+var sensors = yaml.load(fs.readFileSync('config/sensors.yml', 'utf8')).sensors;
+app.set('sensors', sensors);
+console.log(sensors);
 
 // i18n setup
 i18n.use(i18nBck);

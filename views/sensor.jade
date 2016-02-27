@@ -2,16 +2,30 @@ extends layout
 
 block content
   h1= title
+  #variables(data-channel-id="#{sensor.channelId}" style="display:none")
   #graph-live(style="height: 400px;", data-title="Past Hour (minute averages)")
   #graph-week(style="height: 400px;", data-title="Past Week (daily averages)")
+  #map(data-latitude="#{sensor.geo.latitude}" data-longitude="#{sensor.geo.longitude}")
 
   script(src='https://code.jquery.com/jquery-2.1.2.min.js')
   script(src='https://code.highcharts.com/highcharts.js')
   script(src='https://code.highcharts.com/modules/exporting.js')
+  script(src='http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js')
   script(src='/javascripts/graph.js')
 
   script.
     $(function () {
       loadGraphLive();
       loadGraphWeek();
+      loadMap();
+      
+      function loadMap() {
+        var mapEl = $('#map');
+        var geo = [mapEl.data('latitude'), mapEl.data('longitude')];
+        var map = L.map('map').setView(geo, 16);
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+        L.marker(geo).addTo(map).bindPopup('Temperature 31<br>Humidity 49').openPopup();
+      }
     });

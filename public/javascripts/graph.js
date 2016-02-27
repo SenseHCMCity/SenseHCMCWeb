@@ -3,7 +3,8 @@ var tzOffset = 7; // UTC +7
 var oneHour = 3600000;
 var oneWeek = oneHour * 24 * 7;
 
-var dataUrl = 'https://api.thingspeak.com/channels/88894/feeds.json?';
+var channelId = $('#variables').data('channel-id');
+var dataUrl = 'https://api.thingspeak.com/channels/' + channelId + '/feeds.json?';
 dataUrl += 'timezone=' + tz;
 
 function options(time, temperature, humidity, title) {
