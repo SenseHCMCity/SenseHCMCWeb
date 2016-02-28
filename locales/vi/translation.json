@@ -1,6 +1,7 @@
 {
     "app": {
-        "intro": "Chào mừng đến SenseHCMC",
+        "intro": "Chào mừng đến SenseHCMC ....",
+        "home": "Chào mừng",
         "map": "bản đồ"
     }
 }

@@ -1,13 +1,18 @@
 doctype html
 html
   head
-    title= title
+    title= i18n.t('app.site') + ' - ' + title
     link(rel='stylesheet', href='/stylesheets/style.css')
-    link(rel='stylesheet', href='http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css')
   body
     #header
-      a(href='/') Home
-    block content
+      a(href='/')= t('app.site')
+      #language
+        a(href='/lang/en') English
+        a(href='/lang/vi') Tiếng Việt
+    #content-wrapper
+      block content
     #footer
       br
-      p A footer that sits on every page ....
+      p
+        center A footer that sits on every page ....

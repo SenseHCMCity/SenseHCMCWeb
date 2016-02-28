@@ -1,5 +1,6 @@
 {
     "app": {
-        "intro": "Welcome to SenseHCMC"
+        "intro": "Welcome to SenseHCMC ...",
+        "home": "Welcome"
     }
 }

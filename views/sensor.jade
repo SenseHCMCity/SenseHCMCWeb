@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  h1= title
+  h1= sensor.name
   #variables(data-channel-id="#{sensor.channelId}" style="display:none")
   #graph-live(style="height: 400px;", data-title="Past Hour (minute averages)")
   #graph-week(style="height: 400px;", data-title="Past Week (daily averages)")
@@ -10,7 +10,7 @@ block content
   script(src='https://code.jquery.com/jquery-2.1.2.min.js')
   script(src='https://code.highcharts.com/highcharts.js')
   script(src='https://code.highcharts.com/modules/exporting.js')
-  script(src='http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js')
   script(src='/javascripts/graph.js')
 
   script.

@@ -1,10 +1,21 @@
 body {
-    padding: 50px;
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
     color: #00B7FF;
+}
+
+#content-wrapper {
+    margin: 0 5%;
+}
+
+#language {
+    float: right;
+}
+
+#language a {
+    margin-left: 10px;
 }
 
 div[id|='graph'] {
@@ -13,6 +24,9 @@ div[id|='graph'] {
 
 #map {
     height: 500px;
-    width: 80%;
-    margin: 50px 10%;
+    margin: 50px 0;
+}
+
+#footer {
+    margin: 30px 0;
 }
