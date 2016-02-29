@@ -1,11 +1,6 @@
-var tz = 'Asia/Bangkok'; // no Hanoi or ICT so use BKK
 var tzOffset = 7; // UTC +7
 var oneHour = 3600000;
 var oneWeek = oneHour * 24 * 7;
-
-var channelId = $('#variables').data('channel-id');
-var dataUrl = 'https://api.thingspeak.com/channels/' + channelId + '/feeds.json?';
-dataUrl += 'timezone=' + tz;
 
 function options(time, temperature, humidity, title) {
     return {
@@ -68,7 +63,7 @@ function loadGraph(graphId, rangeMillis, avgMins) {
     var tsStr = oneHourBefore.toISOString().slice(0, 19).replace('T', ' ');
 
     // fetch the data
-    $.getJSON(dataUrl + '&start=' + tsStr + '&average=' + avgMins, function (data) {
+    $.getJSON(thingspeakApi() + '&start=' + tsStr + '&average=' + avgMins, function (data) {
         $.each(data.feeds, function (idx, dataPoint) {
             var ts = dataPoint.created_at.slice(11, 16);
             time.push(ts);

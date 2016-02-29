@@ -18,15 +18,57 @@ a {
     margin-left: 10px;
 }
 
+#footer {
+    margin: 30px 0;
+}
+
+
+/* 
+ * AQI colors from http://aqicn.org/faq/2013-09-09/revised-pm25-aqi-breakpoints 
+ */
+
+.aqi-good {
+    background-color: #009966
+}
+
+.aqi-moderate {
+    background-color: #ffde33
+}
+
+.aqi-sensitive {
+    background-color: #ff9933
+}
+
+.aqi-unhealthy {
+    background-color: #cc0033
+}
+
+.aqi-very-unhealthy {
+    background-color: #660099
+}
+
+.aqi-very-hazardous {
+    background-color: #7e0023
+}
+
+#level-box {
+    height: 100px;
+    margin-top: 20px;
+    padding-top: 30px;
+    font-size: 50px;
+    text-align: center;
+}
+
+#level-detail {
+    font-size: 10px;
+    text-align: center;
+}
+
 div[id|='graph'] {
-    margin-bottom: 50px;
+    margin: 50px 0;
 }
 
 #map {
     height: 500px;
     margin: 50px 0;
-}
-
-#footer {
-    margin: 30px 0;
 }
