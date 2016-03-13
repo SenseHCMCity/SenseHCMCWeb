@@ -10,14 +10,17 @@ function loadMap() {
 }
 
 function loadCurrentLevel() {
-    $.getJSON(thingspeakApi() + '&results=1', function (data) {
+    $.getJSON(tsLast() + '&results=1', function (data) {
         var level = {};
-        if (data.feeds.length > 0) {
-            level['value'] = parseFloat(data.feeds[0].field1);
-            level['ts'] = new Date(data.feeds[0].created_at);
+        if (data) {
+            level['value'] = parseFloat(data.field1);
+            level['ts'] = new Date(data.created_at);
         }
         updateLevelBox(level);
-        updateMap(level);
+        updateMap(level['value']);
+    }).fail(function (jqxhr, textStatus, error) {
+        $('#level-detail').append('No data');
+        updateMap('No data');
     });
 }
 
@@ -36,11 +39,10 @@ function updateLevelBox(level) {
 }
 
 
-function updateMap(level) {
-    var popupText = level['value'];
+function updateMap(popupText) {
     if (!popupText)
         popupText = 'No data';
-    L.marker(geo).addTo(map).bindPopup('Temperature: ' + popupText).openPopup();
+    L.marker(geo).addTo(map).bindPopup('pm2.5: ' + popupText).openPopup();
 }
 
 // TODO: SWAP out temperature level with AQI ranges

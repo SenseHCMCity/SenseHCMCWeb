@@ -5,6 +5,7 @@ block content
   img(src='/images/banner.png')
   p= t('app.intro')
   h2 Sensors
-  p
+  ul
     each sensor in sensors
-      a(href='/sensor/#{sensor.id}') #{sensor.name}
+      li
+        a(href='/sensor/#{sensor.id}') #{sensor.name}

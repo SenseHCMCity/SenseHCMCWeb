@@ -1,7 +1,14 @@
 sensors:
   - id: 1
-    name: "Chợ Phú Lâm"
-    channelId: 88894
+    name: "Virtual (test data)"
+    channelId: 97348
     geo:
-      latitude: 10.75568
-      longitude: 106.62985
+      latitude: 10.80332
+      longitude: 106.61573
+      
+  - id: 2
+    name: "District 6"
+    channelId: 98300
+    geo:
+      latitude: 10.75557
+      longitude: 106.63143
