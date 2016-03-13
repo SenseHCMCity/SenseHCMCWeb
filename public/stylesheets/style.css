@@ -25,6 +25,7 @@ a {
 
 /* 
  * AQI colors from http://aqicn.org/faq/2013-09-09/revised-pm25-aqi-breakpoints 
+ * Style name is the description from aqi-us lowercased with max length 12
  */
 
 .aqi-good {
@@ -35,7 +36,7 @@ a {
     background-color: #ffde33
 }
 
-.aqi-sensitive {
+.aqi-unhealthyfo {
     background-color: #ff9933
 }
 
@@ -43,15 +44,15 @@ a {
     background-color: #cc0033
 }
 
-.aqi-very-unhealthy {
+.aqi-veryunhealt {
     background-color: #660099
 }
 
-.aqi-very-hazardous {
+.aqi-hazardous {
     background-color: #7e0023
 }
 
-#level-box {
+#aqi-box {
     height: 100px;
     margin-top: 20px;
     padding-top: 30px;
@@ -59,7 +60,7 @@ a {
     text-align: center;
 }
 
-#level-detail {
+#aqi-detail {
     font-size: 10px;
     text-align: center;
 }

@@ -4,10 +4,10 @@ block content
   h1= sensor.name
   #variables(data-channel-id="#{sensor.channelId}" style="display:none")
   #current-level(style='font-size: 18px; color: #333333')
-    center Current level
-    #level-box
-      #level
-      #level-detail
+    center Current AQI
+    #aqi-box
+      #aqi
+      #aqi-detail
   #graph-live(style="height: 400px;", data-title="Past Hour (minute averages)")
   #graph-week(style="height: 400px;", data-title="Past Week (daily averages)")
   #map(data-latitude="#{sensor.geo.latitude}" data-longitude="#{sensor.geo.longitude}")
@@ -16,13 +16,14 @@ block content
   script(src='https://code.highcharts.com/highcharts.js')
   script(src='https://code.highcharts.com/modules/exporting.js')
   script(src='https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js')
+  script(src='/javascripts/aqi-us.js')
   script(src='/javascripts/thingspeak.js')
   script(src='/javascripts/sensor.js')
   script(src='/javascripts/graph.js')
 
   script.
     $(function () {
-      loadCurrentLevel();
+      loadCurrent();
       loadGraphLive();
       loadGraphWeek();
       loadMap();

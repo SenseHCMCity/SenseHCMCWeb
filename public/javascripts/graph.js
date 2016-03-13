@@ -77,7 +77,7 @@ function loadGraph(graphId, rangeMillis, avgMins) {
 }
 
 function loadGraphLive() {
-    loadGraph('live', oneHour, 1);
+    loadGraph('live', oneHour, 10);
 }
 
 
