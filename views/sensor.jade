@@ -18,13 +18,14 @@ block content
   script(src='https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js')
   script(src='/javascripts/aqi-us.js')
   script(src='/javascripts/thingspeak.js')
-  script(src='/javascripts/sensor.js')
+  script(src='/javascripts/map.js')
   script(src='/javascripts/graph.js')
+  script(src='/javascripts/sensor.js')
 
   script.
     $(function () {
       loadCurrent();
       loadGraphLive();
       loadGraphWeek();
-      loadMap();
+      sensorMap();
     });

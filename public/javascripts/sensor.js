@@ -1,14 +1,3 @@
-var map, geo;
-
-function loadMap() {
-    var mapEl = $('#map');
-    geo = [mapEl.data('latitude'), mapEl.data('longitude')];
-    map = L.map('map').setView(geo, 16);
-    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-}
-
 function loadCurrent() {
     // fetch latest ug m3 value
     // instead of using /last get last 2 records and loop through until we have a value. this is because pm2.5 and pm10 are updated alternately so the field may be blank in /last
@@ -24,7 +13,7 @@ function loadCurrent() {
             });
         }
         updateCurrent(aqi);
-        updateMap(aqi['value']);
+        sensorMapPopup(aqi['value']);
     }).fail(function (jqxhr, textStatus, error) {
         $('#aqi-detail').append('No data');
         updateMap('No data');
@@ -45,13 +34,17 @@ function updateCurrent(aqi) {
     $('#aqi-detail').text(aqi.ts);
 }
 
-
-function updateMap(popupText) {
-    if (!popupText)
-        popupText = 'No data';
-    L.marker(geo).addTo(map).bindPopup('pm2.5: ' + popupText).openPopup();
-}
-
 function aqiDescToId(desc) {
     return desc.toLowerCase().replace(/ /g, '').substr(0, 11);
+}
+
+function sensorMap() {
+    var mapEl = $('#map');
+    createMap(mapEl.data('latitude'), mapEl.data('longitude'), 16);
+}
+
+function sensorMapPopup(aqi) {
+    var popupText = (aqi) ? 'pm2.5: ' + aqi : 'No data';
+    var mapEl = $('#map');
+    mapPopup(mapEl.data('latitude'), mapEl.data('longitude'), popupText);
 }
