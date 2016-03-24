@@ -55,7 +55,7 @@ a {
 #aqi-box {
     height: 100px;
     margin-top: 20px;
-    padding-top: 30px;
+    padding-top: 12px;
     font-size: 50px;
     text-align: center;
 }
@@ -63,10 +63,12 @@ a {
 #aqi-detail {
     font-size: 10px;
     text-align: center;
+    margin-top: 15px;
 }
 
 div[id|='graph'] {
     margin: 50px 0;
+    height: 200px;
 }
 
 #map {
