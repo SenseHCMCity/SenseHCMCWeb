@@ -11,19 +11,23 @@ block content
         #aqi
         #aqi-detail
     #graphs-aqi-live.row
-        #graph-aqi-live-pm2_5.col-md-6(data-name="pm2.5 AQI", data-title="AQI PM2.5 Last 2 Hours")
-        #graph-aqi-live-pm10.col-md-6(data-name="pm10 AQI", data-title="AQI PM10 Last 2 Hours")
+        #graph-aqi-live-pm2_5.col-md-6(data-name="PM2.5 AQI", data-title="AQI Instant PM2.5 Last 2 Hours")
+        #graph-aqi-live-pm10.col-md-6(data-name="PM10 AQI", data-title="AQI Instant PM10 Last 2 Hours")
+    #graphs-aqi-nowcast.row
+        #graph-aqi-nowcast-pm2_5.col-md-6(data-name="PM2.5 Nowcast", data-title="AQI Nowcast PM2.5 Last 12 Hours")
+        #graph-aqi-nowcast-pm10.col-md-6(data-name="PM10 Nowcast", data-title="AQI Nowcast PM10 Last 12 Hours")
     #graphs-concentration-live.row
         #graph-concentration-live-pm2_5.col-md-6(data-name="pm2.5 µg/m3", data-title="Concentration µg/m3 PM2.5 Last 2 Hours")
         #graph-concentration-live-pm10.col-md-6(data-name="pm10 µg/m3", data-title="Concentration µg/m3 PM10 Last 2 Hours")
     #map.row(data-latitude="#{sensor.geo.latitude}" data-longitude="#{sensor.geo.longitude}")
 
   script(src='https://code.jquery.com/jquery-2.1.2.min.js')
-  script(src='https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.min.js')
   script(src='https://code.highcharts.com/highcharts.js')
   script(src='https://code.highcharts.com/modules/exporting.js')
   script(src='https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js')
+  script(src='/javascripts/bootstrap.min.js')
   script(src='/javascripts/aqi-us.js')
+  script(src='/javascripts/nowcast-aqi.js')
   script(src='/javascripts/thingspeak.js')
   script(src='/javascripts/map.js')
   script(src='/javascripts/graph.js')
@@ -33,5 +37,6 @@ block content
     $(function () {
       loadCurrent();
       loadGraphsLive();
+      loadGraphsNowcast();
       sensorMap();
     });

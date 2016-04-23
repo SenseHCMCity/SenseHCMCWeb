@@ -7,13 +7,14 @@ function loadCurrent() {
             $.each(data.feeds, function (idx, feed) {
                 if (feed.field1) {
                     var concentration = parseFloat(feed.field1);
-                    aqi['value'] = pm25(concentration);
                     aqi['ts'] = new Date(feed.created_at);
+                    aqi['pm2.5'] = pm25(concentration);
+                    aqi['pm10'] = pm10(concentration);
                 }
             });
         }
         updateCurrent(aqi);
-        sensorMapPopup(aqi['value']);
+        sensorMapPopup(aqi);
     }).fail(function (jqxhr, textStatus, error) {
         $('#aqi-detail').append('No data');
         updateMap('No data');
@@ -21,13 +22,13 @@ function loadCurrent() {
 }
 
 function updateCurrent(aqi) {
-    if (!aqi['value']) {
+    if (!aqi['pm2.5']) {
         $('#aqi-num').text('No data');
         return;
     }
-    var aqiStr = aqi_label(aqi.value);
-    $('#aqi-box').css('background-color', '#' + aqi_color(aqi.value));
-    $('#aqi').text(aqiStr + ' (' + aqi.value.toFixed(2) + ')');
+    var aqiStr = aqi_label(aqi['pm2.5']);
+    $('#aqi-box').css('background-color', '#' + aqi_color(aqi['pm2.5']));
+    $('#aqi').text(aqiStr + ' (' + aqi['pm2.5'].toFixed(2) + ')');
     $('#aqi-detail').text(aqi.ts);
 }
 
@@ -41,7 +42,17 @@ function sensorMap() {
 }
 
 function sensorMapPopup(aqi) {
-    var popupText = (aqi) ? 'pm2.5: ' + aqi : 'No data';
+    var popupText;
+    if (aqi['pm2.5'] || aqi['pm10']) {
+        popupText = '<b>AQI</b><br>';
+        if (aqi['pm2.5'])
+            popupText = 'PM 2.5 AQI: ' + aqi['pm2.5'];
+        if (aqi['pm10']) {
+            if (popupText != '') popupText += '<br>';
+            popupText += 'PM 10 AQI: ' + aqi['pm10'];
+        }
+    } else
+        popupText = 'No data';
     var mapEl = $('#map');
     mapPopup(mapEl.data('latitude'), mapEl.data('longitude'), popupText);
 }
