@@ -45,6 +45,9 @@ function options(time, dataValues, name, title) {
         credits: {
             enabled: false
         },
+        legend: {
+            enabled: false
+        }
     };
 }
 
@@ -87,10 +90,26 @@ function loadGraphs(graphPM2_5Id, graphPM10Id, rangeMillis, avgMins, pm2_5Functi
 }
 
 function loadGraphsLive() {
-    loadGraphs('aqi-live-pm2_5', 'aqi-live-pm10', oneHour * 2, 10, pm25, pm10);
+    loadGraphs('aqi-live-pm2_5', 'aqi-live-pm10', oneHour * 2, 10, aqiPM25, aqiPM10);
     loadGraphs('concentration-live-pm2_5', 'concentration-live-pm10', oneHour * 2, 10);
 }
 
 function loadGraphWeek() {
     loadGraph('week', oneWeek, 1440);
+}
+
+function aqiPM25(concentration) {
+    return aqiPointOptions(concentration, pm25);
+}
+
+function aqiPM10(concentration) {
+    return aqiPointOptions(concentration, pm10);
+}
+
+function aqiPointOptions(value, aqiF) {
+    var aqiVal = aqiF(value);
+    return {
+        y: aqiVal,
+        color: '#' + aqi_color(aqiVal)
+    };
 }

@@ -26,10 +26,7 @@ function updateCurrent(aqi) {
         return;
     }
     var aqiStr = aqi_label(aqi.value);
-    $('#aqi-box').removeClass(function (index, css) {
-        return (css.match(/aqi-/) || []).join(' ');
-    });
-    $('#aqi-box').addClass('aqi-' + aqiDescToId(aqiStr));
+    $('#aqi-box').css('background-color', '#' + aqi_color(aqi.value));
     $('#aqi').text(aqiStr + ' (' + aqi.value.toFixed(2) + ')');
     $('#aqi-detail').text(aqi.ts);
 }

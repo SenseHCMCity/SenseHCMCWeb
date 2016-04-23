@@ -20,6 +20,7 @@ block content
       createMap(10.7746, 106.6985, 12);
       $('.sensorLink').each(function() {
         var aEl = $(this).children('a');
-        mapPopup(aEl.data('latitude'), aEl.data('longitude'), aEl.text());
+        var aLink = '<a href="' + aEl.attr('href') + '">' + aEl.text() + '</a>';
+        mapPopup(aEl.data('latitude'), aEl.data('longitude'), aLink);
       });
     });
