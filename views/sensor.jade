@@ -13,12 +13,14 @@ block content
     #graphs-aqi-live.row
         #graph-aqi-live-pm2_5.col-md-6(data-name="PM2.5 AQI", data-title="AQI Instant PM2.5 Last 2 Hours")
         #graph-aqi-live-pm10.col-md-6(data-name="PM10 AQI", data-title="AQI Instant PM10 Last 2 Hours")
-    #graphs-aqi-nowcast.row
-        #graph-aqi-nowcast-pm2_5.col-md-6(data-name="PM2.5 Nowcast", data-title="AQI Nowcast PM2.5 Last 12 Hours")
-        #graph-aqi-nowcast-pm10.col-md-6(data-name="PM10 Nowcast", data-title="AQI Nowcast PM10 Last 12 Hours")
     #graphs-concentration-live.row
         #graph-concentration-live-pm2_5.col-md-6(data-name="pm2.5 µg/m3", data-title="Concentration µg/m3 PM2.5 Last 2 Hours")
         #graph-concentration-live-pm10.col-md-6(data-name="pm10 µg/m3", data-title="Concentration µg/m3 PM10 Last 2 Hours")
+    #graphs-aqi-nowcast.row
+        #graph-aqi-nowcast-pm2_5.col-md-6(data-name="PM2.5 Nowcast", data-title="AQI Nowcast PM2.5 Last 12 Hours")
+        #graph-aqi-nowcast-pm10.col-md-6(data-name="PM10 Nowcast", data-title="AQI Nowcast PM10 Last 12 Hours")
+        #nowcast-note
+          p NOTE: Nowcast calculation requires available data - if missing recent hours the graph may be blank here ...
     #map.row(data-latitude="#{sensor.geo.latitude}" data-longitude="#{sensor.geo.longitude}")
 
   script(src='https://code.jquery.com/jquery-2.1.2.min.js')
